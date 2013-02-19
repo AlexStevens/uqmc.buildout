@@ -52,7 +52,7 @@ then
     fi
     cat >> buildout.cfg << EOF
 [buildout]
-extends = uqmc.cfg
+extends = profiles/uqmc.cfg
     http://dist.plone.org/release/4.3-latest/versions.cfg
 
 develop +=
