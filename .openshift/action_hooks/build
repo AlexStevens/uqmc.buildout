@@ -4,6 +4,11 @@
 # before the deploy step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
 
+for f in ~/.env/*
+do
+    . $f
+done
+
 pushd ${OPENSHIFT_REPO_DIR}
 
 if [ -d ./.git/ ]
