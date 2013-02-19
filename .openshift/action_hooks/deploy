@@ -82,7 +82,6 @@ host = ${OPENSHIFT_APP_DNS}
 http-address = ${OPENSHIFT_INTERNAL_IP}:${OPENSHIFT_INTERNAL_PORT}
 environment-vars = 
     PYTHON_EGG_CACHE ${OPENSHIFT_DATA_DIR}egg-cache/
-    TZ Australia/Brisbane
 
 zodb-cache-size = 300
 event-log = ${OPENSHIFT_LOG_DIR}/instance.log
