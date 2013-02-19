@@ -79,15 +79,15 @@ pyeggcache-directory = ${OPENSHIFT_DATA_DIR}egg-cache/
 host = ${OPENSHIFT_APP_DNS}
 
 [instance]
-http-address = ${buildout:http-address}
+http-address = ${OPENSHIFT_INTERNAL_IP}:${OPENSHIFT_INTERNAL_PORT}
 environment-vars = 
-    PYTHON_EGG_CACHE ${buildout:pyeggcache-directory}
+    PYTHON_EGG_CACHE ${OPENSHIFT_DATA_DIR}egg-cache/
 
 zodb-cache-size = 300
-event-log = ${buildout:log-directory}/${:_buildout_section_name_}.log
-z2-log = ${buildout:log-directory}/${:_buildout_section_name_}-Z2.log
-file-storage = ${buildout:data-directory}/filestorage/Data.fs
-blob-storage = ${buildout:data-directory}/blobstorage/
+event-log = ${OPENSHIFT_LOG_DIR}/instance.log
+z2-log = ${OPENSHIFT_LOG_DIR}/instance-Z2.log
+file-storage = ${OPENSHIFT_DATA_DIR}/filestorage/Data.fs
+blob-storage = ${OPENSHIFT_DATA_DIR}/blobstorage/
 
 [versions]
 zc.buildout=1.6.3
