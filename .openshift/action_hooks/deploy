@@ -61,10 +61,12 @@ then
 [buildout]
 extends = profiles/uqmc.cfg
     http://dist.plone.org/release/4.3-latest/versions.cfg
-
+parts =
+    instance
 develop +=
     ./uqmc.theme/
     ./uqmc.types/
+versions = versions
 
 eggs-directory = ${OPENSHIFT_DATA_DIR}eggs/
 download-cache = ${OPENSHIFT_TMP_DIR}${OPENSHIFT_APP_UUID}-cache/
@@ -75,6 +77,17 @@ data-directory = ${OPENSHIFT_DATA_DIR}
 http-address = ${OPENSHIFT_INTERNAL_IP}:${OPENSHIFT_INTERNAL_PORT}
 pyeggcache-directory = ${OPENSHIFT_DATA_DIR}egg-cache/
 host = ${OPENSHIFT_APP_DNS}
+
+[instance]
+http-address = ${buildout:http-address}
+environment-vars = 
+    PYTHON_EGG_CACHE ${buildout:pyeggcache-directory}
+
+zodb-cache-size = 300
+event-log = ${buildout:log-directory}/${:_buildout_section_name_}.log
+z2-log = ${buildout:log-directory}/${:_buildout_section_name_}-Z2.log
+file-storage = ${buildout:data-directory}/filestorage/Data.fs
+blob-storage = ${buildout:data-directory}/blobstorage/
 
 [versions]
 zc.buildout=1.6.3
