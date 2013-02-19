@@ -27,7 +27,7 @@ then
         popd
     fi
 
-    ./bin/buildout -v -c buildout.cfg
+    ./bin/buildout -N -v -c buildout.cfg
 
     popd
 fi
