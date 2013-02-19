@@ -39,12 +39,12 @@ then
 
     if [ ! -d ./uqmc.types/ ]
     then 
-        git clone git@github.com:AlexStevens/uqmc.types.git
+        git clone git://github.com/AlexStevens/uqmc.buildout.git
     fi
 
     if [ ! -d ./uqmc.theme/ ]
     then 
-        git clone git@github.com:AlexStevens/uqmc.theme.git
+        git clone git://github.com/AlexStevens/uqmc.buildout.git
     fi
 
     if [ ! -d ${OPENSHIFT_DATA_DIR}egg-cache/ ]
