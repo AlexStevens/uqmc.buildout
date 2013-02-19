@@ -45,7 +45,7 @@ eggs-directory = ${OPENSHIFT_DATA_DIR}eggs/
 download-cache = ${OPENSHIFT_TMP_DIR}${OPENSHIFT_APP_UUID}-cache/
 extends-cache = ${OPENSHIFT_TMP_DIR}${OPENSHIFT_APP_UUID}-cache/
 effective-user = ${OPENSHIFT_APP_UUID}
-log-directory = ${OPENSHIFT_LOG_DIR}
+log-directory = ${OPENSHIFT_DIY_LOG_DIR}
 data-directory = ${OPENSHIFT_DATA_DIR}
 http-address = ${OPENSHIFT_INTERNAL_IP}:${OPENSHIFT_INTERNAL_PORT}
 pyeggcache-directory = ${OPENSHIFT_DATA_DIR}egg-cache/
@@ -58,8 +58,8 @@ environment-vars =
     TZ Australia/Brisbane
 
 zodb-cache-size = 300
-event-log = ${OPENSHIFT_LOG_DIR}/instance.log
-z2-log = ${OPENSHIFT_LOG_DIR}/instance-Z2.log
+event-log = ${OPENSHIFT_DIY_LOG_DIR}/instance.log
+z2-log = ${OPENSHIFT_DIY_LOG_DIR}/instance-Z2.log
 file-storage = ${OPENSHIFT_DATA_DIR}/filestorage/Data.fs
 blob-storage = ${OPENSHIFT_DATA_DIR}/blobstorage/
 
