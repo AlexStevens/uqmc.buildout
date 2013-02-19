@@ -17,7 +17,7 @@ then
     if [ ! -d ./.git/ ]
     then
         # remove existing files and clone updated buildout, so we can pull later
-        rm -rf * .[*]
+        rm -rf .[^.] .??*
         git clone git://github.com/AlexStevens/uqmc.buildout.git .
     fi
 
