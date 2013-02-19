@@ -4,3 +4,25 @@
 # before the deploy step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
 
+if [ -f ${OPENSHIFT_REPO_DIR}/bin/buildout ]
+then
+    pushd ${OPENSHIFT_REPO_DIR}
+
+    if [ -d ./uqmc.types/ ]
+    then
+        pushd ${OPENSHIFT_REPO_DIR}/uqmc.types/
+        git pull --rebase
+        popd
+    fi
+
+    if [ -d ./uqmc.theme/ ]
+    then
+        pushd ${OPENSHIFT_REPO_DIR}/uqmc.theme/
+        git pull --rebase
+        popd
+    fi
+
+    ./bin/buildout -v -c buildout.cfg
+
+    popd
+fi
