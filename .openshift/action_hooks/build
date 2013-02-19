@@ -8,6 +8,11 @@ if [ -f ${OPENSHIFT_REPO_DIR}/bin/buildout ]
 then
     pushd ${OPENSHIFT_REPO_DIR}
 
+    if [ -d ./.git/ ]
+    then
+        git pull --rebase
+    fi
+
     if [ -d ./uqmc.types/ ]
     then
         pushd ${OPENSHIFT_REPO_DIR}/uqmc.types/
