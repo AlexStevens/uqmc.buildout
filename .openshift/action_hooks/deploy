@@ -57,47 +57,8 @@ then
     then
         export OPENSHIFT_LOG_DIR=${OPENSHIFT_DIY_LOG_DIR}
     fi
-    cat >> buildout.cfg << EOF
-[buildout]
-extends = profiles/uqmc.cfg
-    http://dist.plone.org/release/4.3-latest/versions.cfg
-parts =
-    instance
-develop +=
-    ./uqmc.theme/
-    ./uqmc.types/
-versions = versions
 
-eggs-directory = ${OPENSHIFT_DATA_DIR}eggs/
-download-cache = ${OPENSHIFT_TMP_DIR}${OPENSHIFT_APP_UUID}-cache/
-extends-cache = ${OPENSHIFT_TMP_DIR}${OPENSHIFT_APP_UUID}-cache/
-effective-user = ${OPENSHIFT_APP_UUID}
-log-directory = ${OPENSHIFT_LOG_DIR}
-data-directory = ${OPENSHIFT_DATA_DIR}
-http-address = ${OPENSHIFT_INTERNAL_IP}:${OPENSHIFT_INTERNAL_PORT}
-pyeggcache-directory = ${OPENSHIFT_DATA_DIR}egg-cache/
-host = ${OPENSHIFT_APP_DNS}
+    ./.openshift/action_hooks/build
 
-[instance]
-http-address = ${OPENSHIFT_INTERNAL_IP}:${OPENSHIFT_INTERNAL_PORT}
-environment-vars = 
-    PYTHON_EGG_CACHE ${OPENSHIFT_DATA_DIR}egg-cache/
-    TZ Australia/Brisbane
-
-zodb-cache-size = 300
-event-log = ${OPENSHIFT_LOG_DIR}/instance.log
-z2-log = ${OPENSHIFT_LOG_DIR}/instance-Z2.log
-file-storage = ${OPENSHIFT_DATA_DIR}/filestorage/Data.fs
-blob-storage = ${OPENSHIFT_DATA_DIR}/blobstorage/
-
-[versions]
-zc.buildout=1.6.3
-EOF
-
-    # bootstrap
-    ${OPENSHIFT_DATA_DIR}/virtenv/bin/python bootstrap.py -v 1.6.3 -c buildout.cfg
-
-    # build!
-    ./bin/buildout -v -c buildout.cfg
     popd
 fi
